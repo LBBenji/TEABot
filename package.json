@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LBBenji/TEABot/issues"
   },
-  "homepage": "https://github.com/LBBenji/TEABot#readme"
+  "homepage": "https://github.com/LBBenji/TEABot#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  }
 }
