@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-const Settings = require('./Data/Secret/settings.json');
+const Settings = require('./Data/Secret/Settings.json');
 const fs = require('node:fs');
 
 const commands = [];

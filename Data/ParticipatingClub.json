@@ -1,0 +1,22 @@
+{
+    "clubs": [
+        {
+            "name": "THE NORTH",
+            "representative": [
+                {
+                    "ign": "Surge",
+                    "discordId": "263370989906165771"
+                }
+            ]
+        },
+        {
+            "name": "All In Four",
+            "representative": [
+                {
+                    "ign": "MasterLefty",
+                    "discordId": "427282451291701249"
+                }
+            ]
+        }
+    ]
+}

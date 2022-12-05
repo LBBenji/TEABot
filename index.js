@@ -1,10 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
-const Settings = require('./Data/Secret/settings.json');
+const { Client, Events, GatewayIntentBits, Collection, ReactionCollector } = require('discord.js');
+const Settings = require('./Data/Secret/Settings.json');
 const Version = require('./package.json').version;
 
-const client = new Client({intents: [GatewayIntentBits.Guilds]});
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages]});
 
 client.commands = new Collection();
 
@@ -41,6 +41,11 @@ client.on(Events.InteractionCreate, async interaction => {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
+
+client.on(Events.MessageReactionAdd, (reaction) => {
+    //todo
+})
+
 });
 
 client.login(Settings.Token)
