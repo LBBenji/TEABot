@@ -1,22 +1,14 @@
 {
     "clubs": [
         {
-            "name": "THE NORTH",
+            "name": "Goog Club",
             "representative": [
                 {
-                    "ign": "Surge",
-                    "discordId": "263370989906165771"
+                    "ign": "LBBenji",
+                    "discordId": "198104477998383104"
                 }
-            ]
-        },
-        {
-            "name": "All In Four",
-            "representative": [
-                {
-                    "ign": "MasterLefty",
-                    "discordId": "427282451291701249"
-                }
-            ]
+            ],
+            "eventChannelId": "1049487579596197928"
         }
     ]
 }
