@@ -1,5 +1,8 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const Settings = require("../Data/Secret/Settings.json")
+const fs = require("fs");
+
+const clubsjsonstream = fs.createWriteStream("./Data/ParticipatingClub.json")
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -14,6 +17,6 @@ module.exports = {
                 
                 
 	async execute(interaction) {
-        //todo
+              //todo
 	},
 };

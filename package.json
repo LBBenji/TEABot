@@ -1,6 +1,6 @@
 {
   "name": "teabot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TEA discord bot",
   "main": "index.js",
   "scripts": {
