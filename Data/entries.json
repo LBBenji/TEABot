@@ -1,1 +1,22 @@
-{"entries":[{"user":"LBBenji#6669","clubname":"goog club","prizeId":1,"sslink":"https://cdn.discordapp.com/ephemeral-attachments/1049456566660763679/1049498836336390274/Capture_decran_2022-12-05_234833.png","verifmsgId":"1049498843970027611","validated":false}]}
+{
+ "entries": [
+  {
+   "EntryId": "1670424571671198104477998383104",
+   "user": "LBBenji#6669",
+   "clubname": "Goog Club",
+   "prizeId": 1,
+   "sslink": "https://cdn.discordapp.com/ephemeral-attachments/1049456566660763679/1050061520425472041/Capture_decran_2022-12-05_234833.png",
+   "verifmsgId": "1050061525450244166",
+   "validated": false
+  },
+  {
+   "EntryId": "1670424645717198104477998383104",
+   "user": "LBBenji#6669",
+   "clubname": "Goog Club",
+   "prizeId": 2,
+   "sslink": "https://cdn.discordapp.com/ephemeral-attachments/1049456566660763679/1050061831009468537/2019-11-12_033508.png",
+   "verifmsgId": "1050061841738506330",
+   "validated": false
+  }
+ ]
+}

@@ -1,8 +1,6 @@
-const { SlashCommandBuilder, SlashCommandAttachmentOption } = require('discord.js');
+const { SlashCommandBuilder, SlashCommandAttachmentOption, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const Settings = require("../Data/Secret/Settings.json")
 const fs = require("fs");
-
-const entryjsonstream = fs.createWriteStream("./Data/entries.json")
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -34,19 +32,30 @@ module.exports = {
         const prizeId = interaction.options.getInteger('number');
         const entryPic = interaction.options.getAttachment('screenshot');
         const sender = interaction.member;
-        const obj = {
-            entries: []
-        }
+        const datacatch = fs.readFileSync('./Data/entries.json');
+        const obj = JSON.parse(datacatch);
         const verifyChannel = interaction.guild.channels.cache.find(channel=> channel.id === Settings.VerifChannelId)
-
+        
         if (!verifyChannel) return interaction.reply({ content: 'There is an error with server configuration and cannnot proceed. contact TEA managers to solve this issue.', ephemeral: true })
             .catch(err => console.error('Error to send interaction reply.', err));
 
-		await interaction.reply(`Entry successfully sumbmited!\nYou will appear in the entry list once one of the event managers will have approved it`);
+        
+        
+        const Now = new Date();
+        const EntryId = `${Now.getTime()}${sender.user.id}`
+
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId(EntryId)
+                    .setLabel('Validate')
+                    .setStyle(ButtonStyle.Success)
+            );
 
         const sent = await verifyChannel.send({
             content: `New Entry Submission from **${sender.user.tag}** for **prize#${prizeId}** of ***${clubname}***`,
-            files: [entryPic.url]
+            files: [entryPic.url],
+            components: [row]
         }).catch(err => console.error('Error to send channel message.', err));
 
         if (!sent) {
@@ -55,6 +64,7 @@ module.exports = {
         }
 
         const submitData = {
+            EntryId,
             user: sender.user.tag,
             clubname,
             prizeId,
@@ -65,18 +75,10 @@ module.exports = {
 
         obj.entries.push(submitData);
 
-        entryjsonstream.write(JSON.stringify(obj), function (err) {
-            if (err) {
-                sent.delete().catch(err => console.error('Error to remove a message', err));
-                return interaction.reply({ content: 'There was an issue to write data, try again later or TEA managers.' })
-                    .catch(err => console.error('Error to send interaction reply.', err));
-            }
-        })
+        fs.writeFileSync('./Data/entries.json', JSON.stringify(obj, null, ' '))
 
         console.log(`[📣] A new entry has been created by ${submitData.user} for ${submitData.clubname} with prize number ${submitData.prizeId}}`);
         interaction.reply(`Entry successfully sumbmited!\nYou will appear in the entry list once one of the event managers will have approved it`)
             .catch(err => console.error('Error to send interaction reply.', err));
-
-        sent.react('✅')
 	},
 };
